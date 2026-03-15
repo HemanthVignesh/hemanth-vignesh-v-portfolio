@@ -3,40 +3,22 @@ import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
 
 const items = [
-  {
-    icon: Users,
-    title: "Club Representative",
-    desc: "Organized workshops, coding sessions, and speaker events on neural networks, ML tools, and Python libraries.",
-  },
-  {
-    icon: Calendar,
-    title: "Event Coordinator",
-    desc: "Managed logistics, participant coordination, and judge communication for multi-event programs.",
-  },
-  {
-    icon: Trophy,
-    title: "Cultural Achievement",
-    desc: "Secured 2nd place in inter-college dance competition at LPU fest, representing Team Telangana.",
-  },
+  { icon: Users, title: "Club Representative", desc: "Organized ML workshops and coding sessions." },
+  { icon: Calendar, title: "Event Coordinator", desc: "Managed logistics for multi-event programs." },
+  { icon: Trophy, title: "Cultural Achievement", desc: "2nd place – inter-college dance, LPU fest." },
 ];
 
 const LeadershipSection = () => (
-  <section className="py-24 md:py-32">
+  <section className="py-20 md:py-28">
     <div className="container mx-auto px-6 max-w-3xl">
-      <SectionHeading label="Leadership" title="Beyond Academics" />
-      <div className="grid gap-5">
+      <SectionHeading label="Leadership" title="Beyond Code" />
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {items.map((item, i) => (
-          <AnimatedSection key={item.title} delay={i * 0.1}>
-            <div className="glass rounded-2xl p-6 flex items-start gap-4 hover:border-primary/30 transition-all duration-400">
-              <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                <item.icon size={18} className="text-primary" />
-              </div>
-              <div>
-                <h4 className="font-display font-semibold text-foreground text-sm mb-1">
-                  {item.title}
-                </h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
-              </div>
+          <AnimatedSection key={item.title} delay={i * 0.08}>
+            <div className="glass rounded-xl p-4 hover:border-primary/20 transition-all duration-300 text-center">
+              <item.icon size={18} className="text-primary mx-auto mb-2" />
+              <h4 className="font-display font-semibold text-foreground text-sm mb-1">{item.title}</h4>
+              <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
             </div>
           </AnimatedSection>
         ))}
