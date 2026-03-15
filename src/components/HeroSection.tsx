@@ -21,7 +21,7 @@ const HeroSection = () => (
         className="max-w-3xl mx-auto"
       >
         <div className="flex items-center gap-2 mb-6">
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-xs text-muted-foreground tracking-wide">Open to opportunities · 2026</span>
         </div>
 
