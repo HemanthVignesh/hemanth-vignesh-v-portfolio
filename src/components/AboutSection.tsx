@@ -2,19 +2,16 @@ import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
 
 const AboutSection = () => (
-  <section id="about" className="py-24 md:py-32">
+  <section id="about" className="py-20 md:py-28">
     <div className="container mx-auto px-6 max-w-3xl">
-      <SectionHeading label="About" title="Who I Am" />
-      <AnimatedSection delay={0.15}>
-        <div className="glass rounded-2xl p-8 md:p-10 space-y-4">
-          <p className="text-foreground/90 leading-relaxed">
-            I'm a <span className="text-primary font-medium">3rd-year Computer Science Engineering</span> student at Lovely Professional University, specializing in <span className="text-primary font-medium">Artificial Intelligence & Machine Learning</span>.
+      <SectionHeading label="About" title="Quick Overview" />
+      <AnimatedSection delay={0.1}>
+        <div className="glass rounded-xl p-7 md:p-9 space-y-3">
+          <p className="text-foreground/90 text-sm leading-relaxed">
+            3rd-year <span className="text-primary font-medium">CSE (AI/ML)</span> student at LPU. I build neural networks from scratch, ship full-stack AI products, and care deeply about engineering quality.
           </p>
-          <p className="text-muted-foreground leading-relaxed">
-            Passionate about building intelligent systems, scalable web products, and engineering solutions that create real-world impact. With hands-on experience in neural networks, NLP, and full-stack development, I bring both depth and breadth to every project.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            Currently seeking internship and placement opportunities where I can contribute to innovative engineering teams and continue growing as a builder.
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            Focused on intelligent systems, product engineering, and scalable development. Looking for roles where I can contribute real engineering impact from day one.
           </p>
         </div>
       </AnimatedSection>

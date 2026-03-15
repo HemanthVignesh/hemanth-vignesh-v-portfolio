@@ -6,11 +6,11 @@ interface Props {
 }
 
 const SectionHeading = ({ label, title }: Props) => (
-  <AnimatedSection className="mb-12 md:mb-16">
-    <p className="text-primary font-display text-sm font-semibold tracking-widest uppercase mb-3">
+  <AnimatedSection className="mb-8 md:mb-10">
+    <p className="text-primary font-display text-[11px] font-semibold tracking-[0.2em] uppercase mb-2">
       {label}
     </p>
-    <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
       {title}
     </h2>
   </AnimatedSection>
