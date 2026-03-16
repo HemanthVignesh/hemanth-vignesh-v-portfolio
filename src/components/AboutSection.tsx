@@ -1,19 +1,19 @@
 import AnimatedSection from "./AnimatedSection";
-import SectionHeading from "./SectionHeading";
 
 const AboutSection = () => (
-  <section id="about" className="py-20 md:py-28">
-    <div className="container mx-auto px-6 max-w-3xl">
-      <SectionHeading label="About" title="Quick Overview" />
-      <AnimatedSection delay={0.1}>
-        <div className="glass rounded-xl p-7 md:p-9 space-y-3">
-          <p className="text-foreground/90 text-sm leading-relaxed">
-            3rd-year <span className="text-primary font-medium">CSE (AI/ML)</span> student at LPU. I build neural networks from scratch, ship full-stack AI products, and care deeply about engineering quality.
-          </p>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            Focused on intelligent systems, product engineering, and scalable development. Looking for roles where I can contribute real engineering impact from day one.
-          </p>
-        </div>
+  <section id="about" className="section-light py-20 md:py-28">
+    <div className="container mx-auto px-6 max-w-4xl">
+      <AnimatedSection>
+        <p className="text-xs font-medium tracking-[0.2em] uppercase mb-6" style={{ color: "hsl(var(--primary))" }}>
+          About
+        </p>
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight" style={{ color: "hsl(var(--panel-foreground))" }}>
+          I build <span style={{ color: "hsl(var(--primary))" }}>intelligent systems</span> and
+          practical AI products that solve real engineering problems.
+        </h2>
+        <p className="mt-6 text-base leading-relaxed max-w-2xl" style={{ color: "hsl(0 0% 40%)" }}>
+          3rd-year CSE (AI/ML) student at LPU. I build neural networks from scratch, ship full-stack AI products, and care about engineering quality. Looking for roles where I can contribute real impact from day one.
+        </p>
       </AnimatedSection>
     </div>
   </section>
