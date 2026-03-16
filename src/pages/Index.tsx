@@ -13,18 +13,28 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen">
     <Navbar />
     <HeroSection />
+    {/* Light */}
     <AboutSection />
+    {/* Dark */}
     <SkillsSection />
+    {/* Light */}
     <ProjectsSection />
+    {/* Dark */}
     <ExperienceSection />
+    {/* Dark */}
     <EngineeringMindsetSection />
+    {/* Light */}
     <CurrentlyBuildingSection />
+    {/* Light */}
     <AchievementsSection />
-    <LeadershipSection />
+    {/* Dark */}
     <EducationSection />
+    {/* Light */}
+    <LeadershipSection />
+    {/* Dark */}
     <ContactSection />
     <Footer />
   </div>
