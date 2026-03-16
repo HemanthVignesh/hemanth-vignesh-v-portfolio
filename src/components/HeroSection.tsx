@@ -61,7 +61,7 @@ const HeroSection = () => (
           <div className="w-64 h-80 lg:w-72 lg:h-96 rounded-2xl bg-muted border border-border overflow-hidden relative">
             {/* Replace src with your photo */}
             <img
-              src="public/ProffessionalPic.png"
+              src="public/ChatGPT Image Mar 16, 2026, 10_06_22 AM.jpeg"
               alt="Hemanth Vignesh V"
               className="w-full h-full object-cover"
             />
