@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import ParticleField from "@/components/ParticleField";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -13,30 +14,23 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="min-h-screen">
-    <Navbar />
-    <HeroSection />
-    {/* Light */}
-    <AboutSection />
-    {/* Dark */}
-    <SkillsSection />
-    {/* Light */}
-    <ProjectsSection />
-    {/* Dark */}
-    <ExperienceSection />
-    {/* Dark */}
-    <EngineeringMindsetSection />
-    {/* Light */}
-    <CurrentlyBuildingSection />
-    {/* Light */}
-    <AchievementsSection />
-    {/* Dark */}
-    <EducationSection />
-    {/* Light */}
-    <LeadershipSection />
-    {/* Dark */}
-    <ContactSection />
-    <Footer />
+  <div className="min-h-screen relative">
+    <ParticleField />
+    <div className="relative z-10">
+      <Navbar />
+      <HeroSection />
+      <AboutSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <ExperienceSection />
+      <EngineeringMindsetSection />
+      <CurrentlyBuildingSection />
+      <AchievementsSection />
+      <EducationSection />
+      <LeadershipSection />
+      <ContactSection />
+      <Footer />
+    </div>
   </div>
 );
 
