@@ -12,8 +12,7 @@ const AboutSection = () => (
           practical AI products that solve real engineering problems.
         </h2>
         <p className="mt-6 text-base leading-relaxed max-w-2xl" style={{ color: "hsl(0 0% 40%)" }}>
-          3rd-year CSE (AI/ML) student at LPU. I build neural networks from scratch, ship full-stack AI products, and care about engineering quality. Looking for roles where I can contribute real impact from day one.
-        </p>
+          AI/ML engineer with practical experience in neural network development, full-stack product delivery, and production-focused software engineering. Passionate about building intelligent systems that are reliable, scalable, and impactful in real-world environments.        </p>
       </AnimatedSection>
     </div>
   </section>
