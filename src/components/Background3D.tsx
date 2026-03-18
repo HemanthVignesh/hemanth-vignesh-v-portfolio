@@ -1,7 +1,10 @@
-import { useRef, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef, useMemo, useEffect, useCallback } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, Line } from "@react-three/drei";
 import * as THREE from "three";
+
+/* ── Shared mouse state (normalized -1 to 1) ── */
+const mouse = { x: 0, y: 0 };
 
 /* ── Floating wireframe shape ── */
 const WireShape = ({
@@ -138,9 +141,27 @@ const NeuralNet = () => {
   );
 };
 
+/* ── Camera rig that follows the mouse ── */
+const CameraRig = () => {
+  const { camera } = useThree();
+  const target = useRef(new THREE.Vector3(0, 0, 6));
+
+  useFrame((_state, delta) => {
+    // Subtle shift: max ±0.6 units on x/y
+    target.current.x = THREE.MathUtils.lerp(target.current.x, mouse.x * 0.6, delta * 1.5);
+    target.current.y = THREE.MathUtils.lerp(target.current.y, mouse.y * 0.4, delta * 1.5);
+    camera.position.x = target.current.x;
+    camera.position.y = target.current.y;
+    camera.lookAt(0, 0, 0);
+  });
+
+  return null;
+};
+
 /* ── Scene ── */
 const Scene = () => (
   <>
+    <CameraRig />
     {/* Floating wireframe shapes — very subtle */}
     <WireShape position={[-5, 3, -4]} geometry="icosahedron" speed={0.08} rotationAxis={[1, 0.5, 0]} scale={1.2} opacity={0.06} />
     <WireShape position={[5.5, -1, -6]} geometry="octahedron" speed={0.06} rotationAxis={[0.3, 1, 0.2]} scale={1.5} opacity={0.04} />
@@ -160,17 +181,29 @@ const Scene = () => (
   </>
 );
 
-const Background3D = () => (
-  <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 0.7 }}>
-    <Canvas
-      camera={{ position: [0, 0, 6], fov: 60 }}
-      dpr={[1, 1.5]}
-      gl={{ antialias: true, alpha: true }}
-      style={{ background: "transparent" }}
-    >
-      <Scene />
-    </Canvas>
-  </div>
-);
+const Background3D = () => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -((e.clientY / window.innerHeight) * 2 - 1);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [handleMouseMove]);
+
+  return (
+    <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 0.7 }}>
+      <Canvas
+        camera={{ position: [0, 0, 6], fov: 60 }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, alpha: true }}
+        style={{ background: "transparent" }}
+      >
+        <Scene />
+      </Canvas>
+    </div>
+  );
+};
 
 export default Background3D;
