@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="min-h-screen relative">
-    <ParticleField />
+    <Background3D />
     <div className="relative z-10">
       <Navbar />
       <HeroSection />
