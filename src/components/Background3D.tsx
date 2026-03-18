@@ -131,15 +131,9 @@ const NeuralNet = () => {
           <meshBasicMaterial color="#ffffff" transparent opacity={0.15} />
         </mesh>
       ))}
-      {lines.map((line, i) => {
-        const points = [line.start, line.end];
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
-        return (
-          <line key={`l-${i}`} geometry={geometry}>
-            <lineBasicMaterial color="#ffffff" transparent opacity={0.04} />
-          </line>
-        );
-      })}
+      {lines.map((line, i) => (
+        <Line key={`l-${i}`} points={[line.start.toArray(), line.end.toArray()]} color="#ffffff" transparent opacity={0.04} lineWidth={0.5} />
+      ))}
     </group>
   );
 };
