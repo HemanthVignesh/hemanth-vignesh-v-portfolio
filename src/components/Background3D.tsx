@@ -1,7 +1,10 @@
-import { useRef, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef, useMemo, useEffect, useCallback } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, Line } from "@react-three/drei";
 import * as THREE from "three";
+
+/* ── Shared mouse state (normalized -1 to 1) ── */
+const mouse = { x: 0, y: 0 };
 
 /* ── Floating wireframe shape ── */
 const WireShape = ({
