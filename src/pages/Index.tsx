@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import ParticleField from "@/components/ParticleField";
+import Background3D from "@/components/Background3D";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="min-h-screen relative">
-    <ParticleField />
+    <Background3D />
     <div className="relative z-10">
       <Navbar />
       <HeroSection />
