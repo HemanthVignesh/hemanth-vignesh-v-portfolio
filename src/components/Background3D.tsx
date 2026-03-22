@@ -1,10 +1,11 @@
-import { useRef, useMemo, useEffect, useCallback } from "react";
+import { useRef, useMemo, useEffect, useCallback, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, Line } from "@react-three/drei";
 import * as THREE from "three";
 
 /* ── Shared mouse state (normalized -1 to 1) ── */
 const mouse = { x: 0, y: 0 };
+let hasHovered = false;
 
 /* ── Floating wireframe shape ── */
 const WireShape = ({
@@ -51,7 +52,7 @@ const WireShape = ({
         {geo}
         <meshBasicMaterial
           wireframe
-          color="#ffffff"
+          color="#00FFAA"
           transparent
           opacity={opacity}
         />
@@ -82,7 +83,7 @@ const GlassSphere = ({
         <sphereGeometry args={[1, 16, 16]} />
         <meshBasicMaterial
           wireframe
-          color="#ffffff"
+          color="#00FFAA"
           transparent
           opacity={opacity}
         />
@@ -131,25 +132,32 @@ const NeuralNet = () => {
       {nodes.map((pos, i) => (
         <mesh key={i} position={pos}>
           <sphereGeometry args={[0.04, 8, 8]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.15} />
+          <meshBasicMaterial color="#00FFAA" transparent opacity={0.3} />
         </mesh>
       ))}
       {lines.map((line, i) => (
-        <Line key={`l-${i}`} points={[line.start.toArray(), line.end.toArray()]} color="#ffffff" transparent opacity={0.04} lineWidth={0.5} />
+        <Line key={`l-${i}`} points={[line.start.toArray(), line.end.toArray()]} color="#00FFAA" transparent opacity={0.1} lineWidth={0.8} />
       ))}
     </group>
   );
 };
 
-/* ── Camera rig that follows the mouse ── */
+/* ── Camera rig that follows time or mouse ── */
 const CameraRig = () => {
   const { camera } = useThree();
   const target = useRef(new THREE.Vector3(0, 0, 6));
 
-  useFrame((_state, delta) => {
-    // Subtle shift: max ±0.6 units on x/y
-    target.current.x = THREE.MathUtils.lerp(target.current.x, mouse.x * 0.6, delta * 1.5);
-    target.current.y = THREE.MathUtils.lerp(target.current.y, mouse.y * 0.4, delta * 1.5);
+  useFrame((state, delta) => {
+    // If user hasn't hovered heavily, use a slow sine wave pattern
+    const idleX = Math.sin(state.clock.elapsedTime * 0.2) * 1.5;
+    const idleY = Math.cos(state.clock.elapsedTime * 0.2) * 1.0;
+
+    const targetX = hasHovered ? mouse.x * 1.5 : idleX;
+    const targetY = hasHovered ? mouse.y * 1.0 : idleY;
+
+    target.current.x = THREE.MathUtils.lerp(target.current.x, targetX, delta * 1.5);
+    target.current.y = THREE.MathUtils.lerp(target.current.y, targetY, delta * 1.5);
+
     camera.position.x = target.current.x;
     camera.position.y = target.current.y;
     camera.lookAt(0, 0, 0);
@@ -163,18 +171,18 @@ const Scene = () => (
   <>
     <CameraRig />
     {/* Floating wireframe shapes — very subtle */}
-    <WireShape position={[-5, 3, -4]} geometry="icosahedron" speed={0.08} rotationAxis={[1, 0.5, 0]} scale={1.2} opacity={0.06} />
-    <WireShape position={[5.5, -1, -6]} geometry="octahedron" speed={0.06} rotationAxis={[0.3, 1, 0.2]} scale={1.5} opacity={0.04} />
-    <WireShape position={[-3, -4, -3]} geometry="torus" speed={0.1} rotationAxis={[0.5, 0.5, 1]} scale={0.9} opacity={0.05} />
-    <WireShape position={[4, 4, -5]} geometry="dodecahedron" speed={0.07} rotationAxis={[1, 0.3, 0.5]} scale={1.1} opacity={0.05} />
-    <WireShape position={[0, -6, -4]} geometry="torusKnot" speed={0.04} rotationAxis={[0.2, 1, 0.3]} scale={0.8} opacity={0.04} />
-    <WireShape position={[-6, -2, -7]} geometry="icosahedron" speed={0.05} rotationAxis={[0.5, 0.8, 0.2]} scale={1.8} opacity={0.03} />
-    <WireShape position={[6, 2, -8]} geometry="torus" speed={0.03} rotationAxis={[0.3, 0.6, 1]} scale={2.0} opacity={0.03} />
+    <WireShape position={[-5, 3, -4]} geometry="icosahedron" speed={0.08} rotationAxis={[1, 0.5, 0]} scale={1.2} opacity={0.15} />
+    <WireShape position={[5.5, -1, -6]} geometry="octahedron" speed={0.06} rotationAxis={[0.3, 1, 0.2]} scale={1.5} opacity={0.1} />
+    <WireShape position={[-3, -4, -3]} geometry="torus" speed={0.1} rotationAxis={[0.5, 0.5, 1]} scale={0.9} opacity={0.12} />
+    <WireShape position={[4, 4, -5]} geometry="dodecahedron" speed={0.07} rotationAxis={[1, 0.3, 0.5]} scale={1.1} opacity={0.12} />
+    <WireShape position={[0, -6, -4]} geometry="torusKnot" speed={0.04} rotationAxis={[0.2, 1, 0.3]} scale={0.8} opacity={0.1} />
+    <WireShape position={[-6, -2, -7]} geometry="icosahedron" speed={0.05} rotationAxis={[0.5, 0.8, 0.2]} scale={1.8} opacity={0.08} />
+    <WireShape position={[6, 2, -8]} geometry="torus" speed={0.03} rotationAxis={[0.3, 0.6, 1]} scale={2.0} opacity={0.08} />
 
     {/* Glass spheres */}
-    <GlassSphere position={[3, 1, -3]} scale={0.6} opacity={0.05} />
-    <GlassSphere position={[-4, -3, -5]} scale={0.9} opacity={0.04} />
-    <GlassSphere position={[1, 5, -6]} scale={0.5} opacity={0.03} />
+    <GlassSphere position={[3, 1, -3]} scale={0.6} opacity={0.1} />
+    <GlassSphere position={[-4, -3, -5]} scale={0.9} opacity={0.08} />
+    <GlassSphere position={[1, 5, -6]} scale={0.5} opacity={0.07} />
 
     {/* Neural network pattern */}
     <NeuralNet />
@@ -183,6 +191,7 @@ const Scene = () => (
 
 const Background3D = () => {
   const handleMouseMove = useCallback((e: MouseEvent) => {
+    hasHovered = true;
     mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -((e.clientY / window.innerHeight) * 2 - 1);
   }, []);
@@ -193,7 +202,7 @@ const Background3D = () => {
   }, [handleMouseMove]);
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 0.7 }}>
+    <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 0.6 }}>
       <Canvas
         camera={{ position: [0, 0, 6], fov: 60 }}
         dpr={[1, 1.5]}

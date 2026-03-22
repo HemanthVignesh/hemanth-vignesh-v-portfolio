@@ -1,4 +1,5 @@
 import { Linkedin, Github, Mail, Phone } from "lucide-react";
+import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 
 const contacts = [
@@ -9,36 +10,50 @@ const contacts = [
 ];
 
 const ContactSection = () => (
-  <section id="contact" className="section-dark py-20 md:py-28">
+  <motion.section 
+    id="contact" 
+    className="bg-transparent py-24 relative z-10 border-t border-white/5"
+    initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
+    whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
+    transition={{ duration: 1.5, ease: "easeInOut" }}
+    viewport={{ once: true, margin: "-10%" }}
+  >
     <div className="container mx-auto px-6 max-w-4xl">
       <AnimatedSection>
-        <div className="text-center mb-12">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-2">Contact</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Let's Connect</h2>
-          <p className="text-muted-foreground text-sm mt-3 max-w-md mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">Contact</p>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground tracking-tight">Let's Connect</h2>
+          <p className="text-muted-foreground text-sm mt-6 max-w-md mx-auto font-medium">
             Open to internships, placements, and engineering roles.
           </p>
         </div>
       </AnimatedSection>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
         {contacts.map((c, i) => (
-          <AnimatedSection key={c.label} delay={i * 0.08}>
-            <a
+          <AnimatedSection key={c.label} delay={i * 0.1}>
+            <motion.a
               href={c.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-2 rounded-xl border border-border p-5 hover:border-primary/40 transition-all duration-300 bg-secondary/20 group"
+              whileHover="hover"
+              className="group flex flex-col items-center gap-3 rounded-2xl border border-white/5 p-6 hover:border-primary/50 transition-all duration-500 bg-card/40 backdrop-blur-sm hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(0,255,170,0.15)]"
             >
-              <c.icon size={20} className="text-primary" />
-              <span className="text-xs text-muted-foreground">{c.label}</span>
-              <span className="text-xs font-medium text-foreground text-center break-all">{c.value}</span>
-            </a>
+              <motion.div 
+                variants={{ hover: { scale: 1.15 } }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors"
+              >
+                <c.icon size={18} className="text-primary" />
+              </motion.div>
+              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground group-hover:text-foreground transition-colors">{c.label}</span>
+              <span className="text-xs font-mono text-foreground/80 text-center break-all">{c.value}</span>
+            </motion.a>
           </AnimatedSection>
         ))}
       </div>
     </div>
-  </section>
+  </motion.section>
 );
 
 export default ContactSection;

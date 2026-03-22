@@ -1,35 +1,62 @@
+import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
 
-const categories = [
-  { title: "Languages", skills: ["Python", "C++", "Java", "C"] },
-  { title: "AI / ML", skills: ["Neural Networks", "NLP", "Scikit-learn", "Hugging Face"] },
-  { title: "Web", skills: ["React", "FastAPI", "Node.js", "HTML/CSS"] },
-  { title: "Tools", skills: ["MySQL", "MongoDB", "Git", "REST APIs"] },
+const skills = [
+  { name: "Python", prof: 90 },
+  { name: "C++", prof: 85 },
+  { name: "FastAPI / Node.js", prof: 80 },
+  { name: "React", prof: 75 },
+  { name: "Deep Learning (PyTorch/TF)", prof: 85 },
+  { name: "System Design", prof: 70 },
 ];
 
 const SkillsSection = () => (
-  <section id="skills" className="section-dark py-20 md:py-28">
+  <motion.section 
+    id="skills" 
+    className="bg-transparent py-24 md:py-32 relative z-10 border-t border-white/5"
+    initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
+    whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
+    transition={{ duration: 1.5, ease: "easeInOut" }}
+    viewport={{ once: true, margin: "-10%" }}
+  >
     <div className="container mx-auto px-6 max-w-4xl">
-      <SectionHeading label="Skills" title="Core Stack" variant="dark" />
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {categories.map((cat, i) => (
-          <AnimatedSection key={cat.title} delay={i * 0.08}>
-            <div>
-              <h3 className="font-display text-xs font-semibold text-primary tracking-widest uppercase mb-3">
-                {cat.title}
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
-                {cat.skills.map((s) => (
-                  <span key={s} className="tag">{s}</span>
-                ))}
-              </div>
+      <SectionHeading label="Proficiency" title="Tech Stack" variant="dark" />
+
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+        {skills.map((skill, i) => (
+          <AnimatedSection key={skill.name} delay={i * 0.1}>
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm font-mono font-medium text-foreground tracking-wide uppercase">{skill.name}</span>
+              <motion.span 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 + 0.3 + 1.2 }}
+                className="text-xs font-mono text-primary"
+              >
+                {skill.prof}%
+              </motion.span>
+            </div>
+            {/* The Bar Background */}
+            <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden relative">
+              {/* The Animated Fill */}
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: `${skill.prof}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: i * 0.1 + 0.3, ease: "easeOut" }}
+                className="h-full bg-primary shadow-[0_0_10px_rgba(0,255,170,0.8)] rounded-full relative"
+              >
+                {/* A glowing tip */}
+                <span className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full blur-[4px] mix-blend-overlay" />
+              </motion.div>
             </div>
           </AnimatedSection>
         ))}
       </div>
     </div>
-  </section>
+  </motion.section>
 );
 
 export default SkillsSection;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 const links = [
   { label: "About", href: "#about" },
@@ -44,9 +45,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/80 backdrop-blur-lg border-b border-border/50" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <a href="#" className="font-display text-lg font-bold text-foreground tracking-tight">
@@ -60,12 +60,18 @@ const Navbar = () => {
               <a
                 key={l.href}
                 href={l.href}
-                className={`relative text-sm px-4 py-2 rounded-full transition-all duration-300 ${
-                  isActive
-                    ? "text-primary-foreground bg-primary font-medium"
+                className={`relative text-sm px-4 py-2 transition-all duration-300 ${isActive
+                    ? "text-primary-foreground font-medium"
                     : "text-muted-foreground hover:text-foreground"
-                }`}
+                  }`}
               >
+                {isActive && (
+                  <motion.div
+                    layoutId="navbar-active-pill"
+                    className="absolute inset-0 bg-primary rounded-full z-[-1]"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
                 {l.label}
               </a>
             );
@@ -90,11 +96,10 @@ const Navbar = () => {
                 key={l.href}
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block text-sm px-3 py-2 rounded-lg transition-colors ${
-                  isActive
+                className={`block text-sm px-3 py-2 rounded-lg transition-colors ${isActive
                     ? "text-primary-foreground bg-primary font-medium"
                     : "text-muted-foreground hover:text-foreground"
-                }`}
+                  }`}
               >
                 {l.label}
               </a>

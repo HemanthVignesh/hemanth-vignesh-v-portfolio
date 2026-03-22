@@ -8,23 +8,22 @@ const items = [
 ];
 
 const CurrentlyBuildingSection = () => (
-  <section className="section-light py-20 md:py-28">
+  <section className="bg-background py-20 md:py-28 relative z-10">
     <div className="container mx-auto px-6 max-w-4xl">
       <AnimatedSection>
         <div className="flex items-center gap-2.5 mb-6">
-          <Rocket size={16} style={{ color: "hsl(var(--primary))" }} />
-          <span className="text-xs font-semibold tracking-[0.2em] uppercase" style={{ color: "hsl(var(--primary))" }}>
+          <Rocket size={16} className="text-primary" />
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-primary">
             Currently Building
           </span>
         </div>
-        <div className="grid sm:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-3 gap-6">
           {items.map((item) => (
             <div
               key={item}
-              className="rounded-xl p-5 border"
-              style={{ borderColor: "hsl(0 0% 82%)", background: "hsl(0 0% 96%)" }}
+              className="rounded-2xl p-6 border border-border/50 bg-card/40 backdrop-blur-sm hover:border-primary/50 transition-colors"
             >
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(0 0% 30%)" }}>{item}</p>
+              <p className="text-sm leading-relaxed text-foreground/80 font-medium">{item}</p>
             </div>
           ))}
         </div>
