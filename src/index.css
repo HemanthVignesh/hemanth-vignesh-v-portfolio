@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide native cursor globally — custom cursor takes over */
+*, *::before, *::after { cursor: none !important; }
+
 @layer base {
   :root {
     --background: 0 0% 2%;
