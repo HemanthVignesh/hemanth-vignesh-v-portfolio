@@ -23,10 +23,10 @@ const Index = () => (
       <HeroSection />
       <ImpactMetrics />
       <AboutSection />
+      <SkillsSection />
       <ProjectsSection />
       <ExperienceSection />
       <AchievementsSection />
-      <SkillsSection />
       <ResumeCTA />
       <ContactSection />
       <Footer />
