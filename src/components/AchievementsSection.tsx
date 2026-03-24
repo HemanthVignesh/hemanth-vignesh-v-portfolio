@@ -4,6 +4,7 @@ import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
 
 const items = [
+  { title: "Oracle Cloud Infrastructure 2025", issuer: "Oracle", date: "Mar 2026", href: "https://www.linkedin.com/posts/hemanth-vignesh_oracle-oci-artificialintelligence-activity-7442248950381903873-lEgg?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-0fnIBTPH8SLB5qFLwT8lTv-4FOB1FXFw" },
   { title: "Global Entrepreneurship Summit 2025", issuer: "E-Cell IIT Kharagpur", date: "Sep 2025", href: "https://www.linkedin.com/posts/hemanth-vignesh_entrepreneurship-iitkharagpur-ges2025-activity-7401135859434979328-VmkK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-0fnIBTPH8SLB5qFLwT8lTv-4FOB1FXFw" },
   { title: "DSA – C++ Data Structures & Algorithms", issuer: "CSE Pathashala", date: "Aug 2025", href: "https://www.linkedin.com/posts/hemanth-vignesh_cpp-dsa-programming-activity-7401136371769229312-xJuk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-0fnIBTPH8SLB5qFLwT8lTv-4FOB1FXFw" },
   { title: "Generative AI Revolution Certificate", issuer: "Aspire for Her", date: "Sep 2024", href: "https://www.linkedin.com/posts/hemanth-vignesh_attended-a-workshop-on-unleashing-innovation-activity-7244569710648811521-3YK0?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-0fnIBTPH8SLB5qFLwT8lTv-4FOB1FXFw" },
@@ -11,7 +12,7 @@ const items = [
 ];
 
 const AchievementsSection = () => (
-  <motion.section 
+  <motion.section
     className="bg-transparent py-20 relative z-10 border-t border-white/5"
     initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
     whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
@@ -20,7 +21,7 @@ const AchievementsSection = () => (
   >
     <div className="container mx-auto px-6 max-w-5xl">
       <SectionHeading label="Certifications" title="Recognition" variant="dark" />
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mt-12 w-full">
         {items.map((item, i) => (
           <AnimatedSection key={item.title} delay={i * 0.08} className="h-full">
             <a

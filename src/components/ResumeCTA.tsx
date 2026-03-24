@@ -17,7 +17,7 @@ const ResumeCTA = () => (
 
                 <div className="flex flex-wrap items-center justify-center gap-6">
                     <a
-                        href="/Hemanth_Vignesh_Resume.pdf"
+                        href="/Hemanth_vignesh CV.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group flex flex-col items-center"
