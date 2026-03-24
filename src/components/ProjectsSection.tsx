@@ -28,6 +28,18 @@ const projects = [
     github: "https://github.com/HemanthVignesh/ai-study-assistant",
     image: "/ABSA ss.png",
   },
+  {
+    title: "Bias Detection & Mitigation",
+    tagline: "Fairness Analysis in AI Models",
+    period: "Feb -Mar 2026",
+    problem: "Machine learning models can produce biased predictions across demographic groups, leading to unfair and unreliable AI decisions.",
+    build: "Developed an AI fairness evaluation system that detects bias in model predictions using statistical fairness metrics and applies mitigation techniques to improve balanced outcomes.",
+    difficulty: "Integrated fairness analysis, preprocessing strategies, and explainable visual outputs while preserving model performance.",
+    impact: "Improved understanding of responsible AI by building a practical system for fairness-aware model evaluation and ethical decision support.",
+    stack: ["Python", "Streamlit", "Scikit-learn", "Pandas", "Fairness Metrics"],
+    github: "https://github.com/HemanthVignesh/Bias-detection",
+    image: "/Bias detection ss.png",
+  }
 ];
 
 const labels = [
@@ -38,8 +50,8 @@ const labels = [
 ] as const;
 
 const ProjectsSection = () => (
-  <motion.section 
-    id="projects" 
+  <motion.section
+    id="projects"
     className="bg-transparent py-24 md:py-32 relative z-10 border-t border-white/5"
     initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
     whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
@@ -53,7 +65,7 @@ const ProjectsSection = () => (
           <AnimatedSection key={p.title} delay={i * 0.12}>
             <div className="group relative rounded-[2rem] overflow-hidden border border-white/5 bg-card/60 backdrop-blur-md transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_0_30px_-5px_rgba(0,255,170,0.4)] hover:border-primary/50">
               {/* Project image */}
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.95 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
