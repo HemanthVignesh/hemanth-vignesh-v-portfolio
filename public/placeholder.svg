@@ -1,0 +1,7 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1A1A1A"/>
+  <rect x="2" y="2" width="796" height="596" stroke="#333333" stroke-width="4" stroke-dasharray="10 10"/>
+  <path d="M350 250L450 350M450 250L350 350" stroke="#444444" stroke-width="4" stroke-linecap="round"/>
+  <text x="400" y="380" fill="#666666" font-family="monospace" font-size="14" text-anchor="middle" font-weight="bold">IMAGE NOT FOUND</text>
+  <text x="400" y="405" fill="#444444" font-family="monospace" font-size="12" text-anchor="middle">Upload screenshot to /public/certs/</text>
+</svg>
