@@ -62,23 +62,23 @@ const ExperienceSection = () => {
     <motion.section
       ref={containerRef}
       id="experience"
-      className="bg-transparent py-24 md:py-32 relative z-10 border-t border-white/5"
-      initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
-      whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
+      className="bg-transparent py-24 md:py-32 relative z-10 border-t border-border/50"
+      initial={{ borderTopColor: "hsl(var(--border) / 0.5)" }}
+      whileInView={{ borderTopColor: ["hsl(var(--border) / 0.5)", "hsl(var(--primary) / 0.3)", "hsl(var(--border) / 0.5)"] }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
       viewport={{ once: true, margin: "-10%" }}
     >
       <div className="container mx-auto px-6 max-w-4xl">
-        <SectionHeading label="Experience & Education" title="Journey" variant="dark" />
+        <SectionHeading label="Experience & Education" title="Journey" />
 
         <div className="relative mt-12 pl-4 md:pl-0">
           {/* Draw Line */}
           <motion.div
             style={{ scaleY: scrollYProgress }}
-            className="absolute left-[27px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-[2px] bg-primary shadow-[0_0_15px_rgba(0,255,170,0.5)] origin-top z-0"
+            className="absolute left-[27px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-[2px] bg-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] origin-top z-0"
           />
           {/* Faded Background Line */}
-          <div className="absolute left-[27px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-[2px] bg-white/5 z-0" />
+          <div className="absolute left-[27px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-[2px] bg-border/30 dark:bg-white/5 z-0" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => {
@@ -100,7 +100,7 @@ const ExperienceSection = () => {
                       whileInView={{ scale: [1, 1.4, 1], opacity: 1 }}
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ duration: 0.8, ease: "easeOut" }}
-                      className="absolute left-[-1px] md:left-[calc(50%-29px)] flex items-center justify-center w-14 h-14 bg-background border-4 border-primary rounded-full z-10 text-primary shadow-[0_0_15px_rgba(0,255,170,0.5)] transition-transform duration-500 group-hover:scale-110"
+                      className="absolute left-[-1px] md:left-[calc(50%-29px)] flex items-center justify-center w-14 h-14 bg-background border-4 border-primary rounded-full z-10 text-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] transition-transform duration-500 group-hover:scale-110"
                     >
                       <Icon size={20} />
                     </motion.div>
@@ -112,7 +112,7 @@ const ExperienceSection = () => {
                         <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
                           {exp.role}
                         </h3>
-                        <h4 className="text-muted-foreground font-medium text-sm border border-white/10 bg-white/5 inline-flex w-fit px-3 py-1 rounded-md mt-1">
+                        <h4 className="text-muted-foreground font-medium text-sm border border-border/50 bg-muted/30 dark:bg-white/5 inline-flex w-fit px-3 py-1 rounded-md mt-1">
                           {exp.company}
                         </h4>
                       </div>

@@ -52,18 +52,18 @@ const labels = [
 const ProjectsSection = () => (
   <motion.section
     id="projects"
-    className="bg-transparent py-24 md:py-32 relative z-10 border-t border-white/5"
-    initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
-    whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
+    className="bg-transparent py-24 md:py-32 relative z-10 border-t border-border/50"
+    initial={{ borderTopColor: "hsl(var(--border) / 0.5)" }}
+    whileInView={{ borderTopColor: ["hsl(var(--border) / 0.5)", "hsl(var(--primary) / 0.3)", "hsl(var(--border) / 0.5)"] }}
     transition={{ duration: 1.5, ease: "easeInOut" }}
     viewport={{ once: true, margin: "-10%" }}
   >
     <div className="container mx-auto px-6 max-w-5xl">
-      <SectionHeading label="Projects" title="Engineering Work" variant="dark" />
+      <SectionHeading label="Projects" title="Engineering Work" />
       <div className="grid gap-12 mt-12">
         {projects.map((p, i) => (
           <AnimatedSection key={p.title} delay={i * 0.12}>
-            <div className="group relative rounded-[2rem] overflow-hidden border border-white/5 bg-card/60 backdrop-blur-md transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_0_30px_-5px_rgba(0,255,170,0.4)] hover:border-primary/50">
+            <div className="group relative rounded-[2rem] overflow-hidden border border-border/50 bg-card/60 backdrop-blur-md transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_0_30px_-5px_rgba(var(--primary-rgb),0.3)] dark:hover:shadow-[0_0_30px_-5px_rgba(var(--primary-rgb),0.4)] hover:border-primary/50">
               {/* Project image */}
               <motion.div
                 initial={{ scale: 0.95 }}
@@ -77,13 +77,13 @@ const ProjectsSection = () => (
                   alt={p.title}
                   className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent transition-opacity duration-500 group-hover:opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent transition-opacity duration-500 group-hover:opacity-40" />
               </motion.div>
 
               <div className="p-8 md:p-10 relative">
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-8">
                   <div>
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground group-hover:text-white group-hover:brightness-125 transition-all duration-300 tracking-tight">
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-all duration-300 tracking-tight">
                       {p.title}
                     </h3>
                     <p className="text-base mt-2 text-muted-foreground font-medium">{p.tagline}</p>

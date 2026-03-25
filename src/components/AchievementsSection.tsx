@@ -58,14 +58,14 @@ const AchievementsSection = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="bg-transparent py-20 relative z-10 border-t border-white/5"
-      initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
-      whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
+      className="bg-transparent py-20 relative z-10 border-t border-border/50"
+      initial={{ borderTopColor: "hsl(var(--border) / 0.5)" }}
+      whileInView={{ borderTopColor: ["hsl(var(--border) / 0.5)", "hsl(var(--primary) / 0.3)", "hsl(var(--border) / 0.5)"] }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
       viewport={{ once: true, margin: "-10%" }}
     >
       <div className="container mx-auto px-6 max-w-5xl">
-        <SectionHeading label="Certifications" title="Recognition" variant="dark" />
+        <SectionHeading label="Certifications" title="Recognition" />
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mt-12 w-full">
           {items.map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.08} className="h-full">
@@ -75,7 +75,7 @@ const AchievementsSection = () => {
                 rel="noopener noreferrer"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group h-full flex flex-col justify-between rounded-2xl border border-white/5 bg-card/40 backdrop-blur-sm p-6 hover:-translate-y-2 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_10px_30px_-10px_rgba(0,255,170,0.15)] relative overflow-hidden"
+                className="group h-full flex flex-col justify-between rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm p-6 hover:-translate-y-2 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_10px_30px_-10px_rgba(var(--primary-rgb),0.15)] relative overflow-hidden"
               >
                 <div className="absolute -right-4 -top-4 w-16 h-16 bg-primary/10 rounded-full blur-[20px] group-hover:bg-primary/20 transition-all duration-500" />
 
@@ -85,7 +85,7 @@ const AchievementsSection = () => {
                     {item.title}
                   </h4>
                 </div>
-                <p className="text-xs flex items-center gap-2 font-medium text-muted-foreground/80 pt-4 border-t border-white/5">
+                <p className="text-xs flex items-center gap-2 font-medium text-muted-foreground/80 pt-4 border-t border-border/50">
                   <Award size={14} className="text-primary" /> {item.issuer}
                 </p>
               </a>

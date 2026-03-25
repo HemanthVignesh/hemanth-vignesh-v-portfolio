@@ -5,9 +5,9 @@ import DecryptedText from "./DecryptedText";
 const AboutSection = () => (
   <motion.section
     id="about"
-    className="bg-transparent py-24 md:py-32 relative z-10 border-t border-white/5"
-    initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
-    whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
+    className="bg-transparent py-24 md:py-32 relative z-10 border-t border-border/50"
+    initial={{ borderTopColor: "hsl(var(--border) / 0.5)" }}
+    whileInView={{ borderTopColor: ["hsl(var(--border) / 0.5)", "hsl(var(--primary) / 0.3)", "hsl(var(--border) / 0.5)"] }}
     transition={{ duration: 1.5, ease: "easeInOut" }}
     viewport={{ once: true, margin: "-10%" }}
   >

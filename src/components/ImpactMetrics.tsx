@@ -9,9 +9,9 @@ const metrics = [
 
 const ImpactMetrics = () => (
     <motion.section 
-        className="bg-transparent py-16 md:py-24 relative z-10 border-t border-white/5"
-        initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
-        whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
+        className="bg-transparent py-16 md:py-24 relative z-10 border-t border-border/50"
+        initial={{ borderTopColor: "hsl(var(--border) / 0.5)" }}
+        whileInView={{ borderTopColor: ["hsl(var(--border) / 0.5)", "hsl(var(--primary) / 0.3)", "hsl(var(--border) / 0.5)"] }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
         viewport={{ once: true, margin: "-10%" }}
     >
@@ -24,7 +24,7 @@ const ImpactMetrics = () => (
                             whileInView={{ filter: "blur(0px)", opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1, duration: 0.8, ease: "easeOut" }}
-                            className="font-display text-4xl md:text-5xl font-bold text-primary drop-shadow-[0_0_15px_rgba(0,255,170,0.5)] tracking-tighter"
+                            className="font-display text-4xl md:text-5xl font-bold text-primary drop-shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] tracking-tighter"
                         >
                             {m.value}
                         </motion.span>
@@ -38,7 +38,7 @@ const ImpactMetrics = () => (
                             {m.label}
                         </motion.span>
                         {i !== metrics.length - 1 && (
-                            <div className="hidden md:block absolute right-[-24px] top-1/2 -translate-y-1/2 w-[1px] h-12 bg-white/5" />
+                            <div className="hidden md:block absolute right-[-24px] top-1/2 -translate-y-1/2 w-[1px] h-12 bg-border/50" />
                         )}
                     </div>
                 ))}

@@ -102,7 +102,7 @@ export default function DecryptedText({
           style={{
             color:
               char !== text[i] && char !== " "
-                ? "var(--color-primary, #00ffaa)"
+                ? "hsl(var(--primary))"
                 : undefined,
             opacity: char !== text[i] && char !== " " ? 0.55 : 1,
             transition: "color 0.05s, opacity 0.05s",

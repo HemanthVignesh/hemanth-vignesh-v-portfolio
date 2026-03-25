@@ -12,9 +12,9 @@ const contacts = [
 const ContactSection = () => (
   <motion.section 
     id="contact" 
-    className="bg-transparent py-24 relative z-10 border-t border-white/5"
-    initial={{ borderTopColor: "rgba(255, 255, 255, 0.05)" }}
-    whileInView={{ borderTopColor: ["rgba(255, 255, 255, 0.05)", "rgba(0, 255, 170, 0.3)", "rgba(255, 255, 255, 0.05)"] }}
+    className="bg-transparent py-24 relative z-10 border-t border-border/50"
+    initial={{ borderTopColor: "hsl(var(--border) / 0.5)" }}
+    whileInView={{ borderTopColor: ["hsl(var(--border) / 0.5)", "hsl(var(--primary) / 0.3)", "hsl(var(--border) / 0.5)"] }}
     transition={{ duration: 1.5, ease: "easeInOut" }}
     viewport={{ once: true, margin: "-10%" }}
   >
@@ -37,7 +37,7 @@ const ContactSection = () => (
               target="_blank"
               rel="noopener noreferrer"
               whileHover="hover"
-              className="group flex flex-col items-center gap-3 rounded-2xl border border-white/5 p-6 hover:border-primary/50 transition-all duration-500 bg-card/40 backdrop-blur-sm hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(0,255,170,0.15)]"
+              className="group flex flex-col items-center gap-3 rounded-2xl border border-border/50 p-6 hover:border-primary/50 transition-all duration-500 bg-card/40 backdrop-blur-sm hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(var(--primary-rgb),0.15)]"
             >
               <motion.div 
                 variants={{ hover: { scale: 1.15 } }}

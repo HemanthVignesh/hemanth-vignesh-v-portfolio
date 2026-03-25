@@ -52,7 +52,7 @@ const WireShape = ({
         {geo}
         <meshBasicMaterial
           wireframe
-          color="#00FFAA"
+          color="hsl(var(--primary))"
           transparent
           opacity={opacity}
         />
@@ -83,7 +83,7 @@ const GlassSphere = ({
         <sphereGeometry args={[1, 16, 16]} />
         <meshBasicMaterial
           wireframe
-          color="#00FFAA"
+          color="hsl(var(--primary))"
           transparent
           opacity={opacity}
         />
@@ -132,11 +132,11 @@ const NeuralNet = () => {
       {nodes.map((pos, i) => (
         <mesh key={i} position={pos}>
           <sphereGeometry args={[0.04, 8, 8]} />
-          <meshBasicMaterial color="#00FFAA" transparent opacity={0.3} />
+          <meshBasicMaterial color="hsl(var(--primary))" transparent opacity={0.3} />
         </mesh>
       ))}
       {lines.map((line, i) => (
-        <Line key={`l-${i}`} points={[line.start.toArray(), line.end.toArray()]} color="#00FFAA" transparent opacity={0.1} lineWidth={0.8} />
+        <Line key={`l-${i}`} points={[line.start.toArray(), line.end.toArray()]} color="hsl(var(--primary))" transparent opacity={0.1} lineWidth={0.8} />
       ))}
     </group>
   );

@@ -31,7 +31,7 @@ const ResumeCTA = () => (
 
                     <a
                         href="#contact"
-                        className="group flex items-center justify-center h-16 w-64 rounded-full border border-white/10 bg-card text-foreground font-bold tracking-widest uppercase transition-all duration-500 hover:border-white/30 hover:bg-white/5 cursor-pointer"
+                        className="group flex items-center justify-center h-16 w-64 rounded-full border border-border/50 bg-card text-foreground font-bold tracking-widest uppercase transition-all duration-500 hover:border-primary/50 hover:bg-accent/5 cursor-pointer"
                     >
                         <span className="flex items-center gap-3">
                             Reach Out <ArrowRight size={18} className="transition-transform group-hover:translate-x-2" />

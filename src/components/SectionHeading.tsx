@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 interface Props {
   label: string;
   title: string;
-  variant?: "dark" | "light";
 }
 
 const wordVariants: any = {
@@ -16,7 +15,7 @@ const wordVariants: any = {
   }
 };
 
-const SectionHeading = ({ label, title, variant = "dark" }: Props) => {
+const SectionHeading = ({ label, title }: Props) => {
   const words = title.split(" ");
   return (
     <AnimatedSection className="mb-10 md:mb-12">

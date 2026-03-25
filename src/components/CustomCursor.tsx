@@ -78,8 +78,8 @@ const CustomCursor = () => {
             width: clicking ? 6 : 8,
             height: clicking ? 6 : 8,
             borderRadius: "50%",
-            background: "rgba(0,255,170,0.95)",
-            boxShadow: "0 0 8px rgba(0,255,170,0.8)",
+            background: "hsl(var(--primary))",
+            boxShadow: "0 0 8px rgba(var(--primary-rgb),0.8)",
             transition: "width 0.1s, height 0.1s",
           }}
         />
@@ -97,12 +97,12 @@ const CustomCursor = () => {
             height: hovering ? 56 : clicking ? 28 : 40,
             borderRadius: "50%",
             border: hovering
-              ? "2px solid rgba(0,255,170,0.9)"
-              : "1.5px solid rgba(0,255,170,0.5)",
+              ? "2px solid hsl(var(--primary) / 0.9)"
+              : "1.5px solid hsl(var(--primary) / 0.5)",
             boxShadow: hovering
-              ? "0 0 20px rgba(0,255,170,0.35), inset 0 0 10px rgba(0,255,170,0.08)"
-              : "0 0 6px rgba(0,255,170,0.15)",
-            background: hovering ? "rgba(0,255,170,0.04)" : "transparent",
+              ? "0 0 20px rgba(var(--primary-rgb), 0.35), inset 0 0 10px rgba(var(--primary-rgb), 0.08)"
+              : "0 0 6px rgba(var(--primary-rgb), 0.15)",
+            background: hovering ? "hsl(var(--primary) / 0.04)" : "transparent",
             transition: "width 0.25s cubic-bezier(0.34,1.56,0.64,1), height 0.25s cubic-bezier(0.34,1.56,0.64,1), border 0.2s, box-shadow 0.2s, background 0.2s",
             // Center it: offset is handled in transform (minus half size)
             // but size changes need re-centering; we do via marginLeft/Top
